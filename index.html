@@ -1,52 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
   <meta charset="UTF-8" />
   <title>Vantage ERP - Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Tailwind CDN (no requiere build) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-50">
+<body class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+
   <!-- LOGIN -->
   <div id="login-view" class="min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-md bg-slate-900/60 border border-slate-800 rounded-2xl p-8 shadow-xl backdrop-blur">
+    <div class="w-full max-w-md bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-xl backdrop-blur">
       <div class="mb-6 text-center">
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-2">
           ERP en la nube
         </p>
-        <h1 class="text-2xl font-semibold text-slate-50">
-          Vantage <span class="text-sky-400">ERP</span>
+        <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-50">
+          Vantage <span class="text-sky-600 dark:text-sky-400">ERP</span>
         </h1>
-        <p class="mt-1 text-xs text-slate-400">
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
           Demo funcional para PYMEs de la República Dominicana
         </p>
       </div>
       <form id="login-form" class="space-y-4">
         <div class="space-y-1">
-          <label class="text-xs font-medium text-slate-200">Correo</label>
+          <label class="text-xs font-medium text-slate-700 dark:text-slate-200">Correo</label>
           <input
             id="login-email"
-            class="w-full bg-slate-900 border border-slate-700 text-slate-50 text-sm rounded-md px-3 py-2"
+            class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-50 text-sm rounded-md px-3 py-2"
             value="demo@empresa.com"
           />
         </div>
         <div class="space-y-1">
-          <label class="text-xs font-medium text-slate-200">Contraseña</label>
+          <label class="text-xs font-medium text-slate-700 dark:text-slate-200">Contraseña</label>
           <input
             id="login-password"
             type="password"
-            class="w-full bg-slate-900 border border-slate-700 text-slate-50 text-sm rounded-md px-3 py-2"
+            class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-50 text-sm rounded-md px-3 py-2"
             value="demo123"
           />
         </div>
         <button
           type="submit"
-          class="w-full mt-2 bg-sky-500 hover:bg-sky-600 text-xs font-semibold tracking-wide rounded-md py-2"
+          class="w-full mt-2 bg-sky-600 hover:bg-sky-700 text-xs font-semibold tracking-wide rounded-md py-2 text-white"
         >
           Iniciar sesión en demo
         </button>
-        <p class="text-[10px] text-center text-slate-500 mt-1">
+        <p class="text-[10px] text-center text-slate-500 dark:text-slate-400 mt-1">
           Esta es una cuenta de demostración. No se validan credenciales reales.
         </p>
       </form>
@@ -54,46 +60,46 @@
   </div>
 
   <!-- APLICACIÓN -->
-  <div id="app-layout" class="hidden min-h-screen flex">
-    <!-- Sidebar -->
-    <aside class="hidden md:flex md:flex-col w-56 border-r border-slate-900 bg-slate-950/80">
-      <div class="h-16 flex items-center px-4 border-b border-slate-900">
+  <div id="app-layout" class="hidden min-h-screen flex bg-slate-50 dark:bg-slate-950">
+    <!-- Sidebar desktop -->
+    <aside class="hidden md:flex md:flex-col w-56 border-r border-slate-200 dark:border-slate-900 bg-white/80 dark:bg-slate-950/80">
+      <div class="h-16 flex items-center px-4 border-b border-slate-200 dark:border-slate-900">
         <div>
-          <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500">
+          <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500 dark:text-slate-500">
             ERP en la nube
           </p>
-          <p class="text-sm font-semibold text-slate-50">
-            Vantage <span class="text-sky-400">ERP</span>
+          <p class="text-sm font-semibold text-slate-900 dark:text-slate-50">
+            Vantage <span class="text-sky-600 dark:text-sky-400">ERP</span>
           </p>
         </div>
       </div>
       <nav class="flex-1 px-2 py-3 space-y-1 overflow-y-auto text-xs">
-        <button data-section="dashboard" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left bg-sky-500/10 text-sky-100 border border-sky-500/40">
+        <button data-section="dashboard" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left bg-sky-500/10 text-sky-800 dark:text-sky-100 border border-sky-500/40">
           <span>📊</span> <span>Dashboard</span>
         </button>
-        <button data-section="clientes" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-300 hover:bg-slate-900/80">
+        <button data-section="clientes" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
           <span>👥</span> <span>Clientes</span>
         </button>
-        <button data-section="productos" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-300 hover:bg-slate-900/80">
+        <button data-section="productos" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
           <span>📦</span> <span>Productos</span>
         </button>
-        <button data-section="inventario" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-300 hover:bg-slate-900/80">
+        <button data-section="inventario" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
           <span>🏭</span> <span>Inventario</span>
         </button>
-        <button data-section="ventas" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-300 hover:bg-slate-900/80">
+        <button data-section="ventas" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
           <span>🧾</span> <span>Ventas</span>
         </button>
-        <button data-section="contabilidad" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-300 hover:bg-slate-900/80">
+        <button data-section="contabilidad" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
           <span>📚</span> <span>Contabilidad</span>
         </button>
-        <button data-section="reportes" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-300 hover:bg-slate-900/80">
+        <button data-section="reportes" class="nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
           <span>📈</span> <span>Reportes</span>
         </button>
       </nav>
-      <div class="px-2 pb-3 border-t border-slate-900">
+      <div class="px-2 pb-3 border-t border-slate-200 dark:border-slate-900">
         <button
           id="logout-btn"
-          class="w-full flex items-center gap-2 h-8 text-xs text-slate-400 hover:text-slate-100 hover:bg-slate-900/80 rounded-md px-3"
+          class="w-full flex items-center gap-2 h-8 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900/80 rounded-md px-3"
         >
           ⏏ Cerrar sesión
         </button>
@@ -102,28 +108,37 @@
 
     <!-- Main -->
     <div class="flex-1 flex flex-col min-w-0">
-      <header class="h-14 border-b border-slate-900 flex items-center justify-between px-4 bg-slate-950/80 backdrop-blur">
+      <header class="h-14 border-b border-slate-200 dark:border-slate-900 flex items-center justify-between px-3 md:px-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur">
         <div class="flex items-center gap-2 md:hidden">
-          <p class="text-xs font-semibold text-slate-50">
-            Vantage <span class="text-sky-400">ERP</span>
+          <p class="text-xs font-semibold text-slate-900 dark:text-slate-50">
+            Vantage <span class="text-sky-600 dark:text-sky-400">ERP</span>
           </p>
         </div>
         <div class="flex-1 flex items-center justify-between gap-3">
-          <p class="text-xs text-slate-400">
+          <p class="text-[11px] md:text-xs text-slate-500 dark:text-slate-400">
             Piloto de implementación SaaS · Demo para tesis
           </p>
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 md:gap-3">
+            <!-- Toggle tema -->
+            <button
+              id="theme-toggle"
+              class="inline-flex items-center gap-1 rounded-full border border-slate-300 dark:border-slate-700 px-2.5 py-1 text-[10px] md:text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900"
+            >
+              <span id="theme-toggle-icon">🌙</span>
+              <span id="theme-toggle-label" class="hidden sm:inline">Modo oscuro</span>
+            </button>
+
             <div class="hidden sm:block text-right">
-              <p class="text-[11px] text-slate-200 font-medium">
+              <p class="text-[11px] text-slate-800 dark:text-slate-200 font-medium">
                 Usuario demo
               </p>
-              <p class="text-[10px] text-slate-500">
+              <p class="text-[10px] text-slate-500 dark:text-slate-500">
                 Administrador · Empresa Vantage Test
               </p>
             </div>
             <button
               id="logout-btn-mobile"
-              class="md:hidden inline-flex items-center gap-1 rounded-full border border-slate-700/80 px-2.5 py-1 text-[10px] text-slate-300 hover:bg-slate-900"
+              class="md:hidden inline-flex items-center gap-1 rounded-full border border-slate-300 dark:border-slate-700 px-2.5 py-1 text-[10px] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900"
             >
               ⏏ Salir
             </button>
@@ -131,35 +146,62 @@
         </div>
       </header>
 
-      <main class="flex-1 px-3 md:px-6 py-4 bg-slate-950 overflow-y-auto text-xs md:text-sm">
+      <main class="flex-1 px-3 md:px-6 py-4 bg-slate-50 dark:bg-slate-950 overflow-y-auto text-xs md:text-sm">
+        <!-- NAV MÓVIL (se muestra solo en pantallas pequeñas) -->
+        <div class="md:hidden mb-4">
+          <div class="flex flex-wrap gap-2">
+            <button data-section="dashboard" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs bg-sky-500/10 text-sky-800 dark:text-sky-100 border border-sky-500/40">
+              <span>📊</span><span>Dashboard</span>
+            </button>
+            <button data-section="clientes" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
+              <span>👥</span><span>Clientes</span>
+            </button>
+            <button data-section="productos" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
+              <span>📦</span><span>Productos</span>
+            </button>
+            <button data-section="inventario" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
+              <span>🏭</span><span>Inventario</span>
+            </button>
+            <button data-section="ventas" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
+              <span>🧾</span><span>Ventas</span>
+            </button>
+            <button data-section="contabilidad" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
+              <span>📚</span><span>Contabilidad</span>
+            </button>
+            <button data-section="reportes" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80">
+              <span>📈</span><span>Reportes</span>
+            </button>
+          </div>
+        </div>
+
         <!-- DASHBOARD -->
         <section id="section-dashboard" class="section space-y-6">
           <div>
-            <h2 class="text-lg font-semibold text-slate-50">Resumen general</h2>
-            <p class="text-xs text-slate-400">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Resumen general</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
               Indicadores clave del piloto de Vantage ERP.
             </p>
           </div>
           <div class="grid gap-4 md:grid-cols-4">
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-              <p class="text-[11px] text-slate-400">Clientes activos</p>
-              <p id="dash-clientes" class="mt-1 text-2xl font-semibold text-slate-50">0</p>
-              <p class="mt-1 text-[10px] text-slate-500">Registros maestros</p>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">Clientes activos</p>
+              <p id="dash-clientes" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">0</p>
+              <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Registros maestros</p>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-              <p class="text-[11px] text-slate-400">Productos</p>
-              <p id="dash-productos" class="mt-1 text-2xl font-semibold text-slate-50">0</p>
-              <p class="mt-1 text-[10px] text-slate-500">Catálogo de inventario</p>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">Productos</p>
+              <p id="dash-productos" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">0</p>
+              <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Catálogo de inventario</p>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-              <p class="text-[11px] text-slate-400">Alertas de stock</p>
-              <p id="dash-stock-bajo" class="mt-1 text-2xl font-semibold text-slate-50">0</p>
-              <p class="mt-1 text-[10px] text-slate-500">Productos por debajo del mínimo</p>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">Alertas de stock</p>
+              <p id="dash-stock-bajo" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">0</p>
+              <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Productos por debajo del mínimo</p>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-              <p class="text-[11px] text-slate-400">Ventas de hoy</p>
-              <p id="dash-ventas-hoy" class="mt-1 text-2xl font-semibold text-slate-50">RD$ 0.00</p>
-              <p class="mt-1 text-[10px] text-slate-500">Basado en facturas registradas</p>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">Ventas de hoy</p>
+              <p id="dash-ventas-hoy" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
+              <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Basado en facturas registradas</p>
             </div>
           </div>
         </section>
@@ -168,50 +210,50 @@
         <section id="section-clientes" class="section hidden space-y-6">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <div>
-              <h2 class="text-lg font-semibold text-slate-50">Clientes</h2>
-              <p class="text-xs text-slate-400">
+              <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Clientes</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
                 Gestión básica de clientes para el piloto del sistema.
               </p>
             </div>
           </div>
           <div class="grid gap-4 md:grid-cols-[2fr,1.1fr]">
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-xs">
-                  <thead class="bg-slate-900/80 border-b border-slate-800">
+                  <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
                     <tr>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Nombre</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Documento</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Teléfono</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Correo</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Nombre</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Documento</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Teléfono</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Correo</th>
                     </tr>
                   </thead>
                   <tbody id="clientes-tbody"></tbody>
                 </table>
               </div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-3">
-              <h3 class="text-sm font-semibold text-slate-50">Nuevo cliente</h3>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Nuevo cliente</h3>
               <form id="cliente-form" class="space-y-2">
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Nombre / Razón social</label>
-                  <input id="cliente-nombre" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Nombre / Razón social</label>
+                  <input id="cliente-nombre" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Documento</label>
-                  <input id="cliente-documento" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Documento</label>
+                  <input id="cliente-documento" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Teléfono</label>
-                  <input id="cliente-telefono" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Teléfono</label>
+                  <input id="cliente-telefono" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Correo</label>
-                  <input id="cliente-correo" type="email" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Correo</label>
+                  <input id="cliente-correo" type="email" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <button
                   type="submit"
-                  class="w-full mt-2 bg-sky-500 hover:bg-sky-600 text-[11px] font-semibold rounded-md py-2"
+                  class="w-full mt-2 bg-sky-600 hover:bg-sky-700 text-[11px] font-semibold rounded-md py-2 text-white"
                 >
                   Guardar cliente
                 </button>
@@ -224,57 +266,57 @@
         <section id="section-productos" class="section hidden space-y-6">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <div>
-              <h2 class="text-lg font-semibold text-slate-50">Productos</h2>
-              <p class="text-xs text-slate-400">
+              <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Productos</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
                 Catálogo de productos utilizados en inventario y ventas.
               </p>
             </div>
           </div>
           <div class="grid gap-4 md:grid-cols-[2fr,1.1fr]">
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-xs">
-                  <thead class="bg-slate-900/80 border-b border-slate-800">
+                  <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
                     <tr>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Código</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Nombre</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Categoría</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Precio (RD$)</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Stock mín.</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Código</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Nombre</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Categoría</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Precio (RD$)</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Stock mín.</th>
                     </tr>
                   </thead>
                   <tbody id="productos-tbody"></tbody>
                 </table>
               </div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-3">
-              <h3 class="text-sm font-semibold text-slate-50">Nuevo producto</h3>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Nuevo producto</h3>
               <form id="producto-form" class="space-y-2">
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Código</label>
-                  <input id="producto-codigo" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Código</label>
+                  <input id="producto-codigo" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Nombre</label>
-                  <input id="producto-nombre" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Nombre</label>
+                  <input id="producto-nombre" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Categoría</label>
-                  <input id="producto-categoria" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Categoría</label>
+                  <input id="producto-categoria" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                   <div class="space-y-1">
-                    <label class="text-[11px] text-slate-300">Precio</label>
-                    <input id="producto-precio" type="number" step="0.01" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                    <label class="text-[11px] text-slate-600 dark:text-slate-300">Precio</label>
+                    <input id="producto-precio" type="number" step="0.01" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                   </div>
                   <div class="space-y-1">
-                    <label class="text-[11px] text-slate-300">Stock mínimo</label>
-                    <input id="producto-stockmin" type="number" class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5" />
+                    <label class="text-[11px] text-slate-600 dark:text-slate-300">Stock mínimo</label>
+                    <input id="producto-stockmin" type="number" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5" />
                   </div>
                 </div>
                 <button
                   type="submit"
-                  class="w-full mt-2 bg-sky-500 hover:bg-sky-600 text-[11px] font-semibold rounded-md py-2"
+                  class="w-full mt-2 bg-sky-600 hover:bg-sky-700 text-[11px] font-semibold rounded-md py-2 text-white"
                 >
                   Guardar producto
                 </button>
@@ -286,21 +328,21 @@
         <!-- INVENTARIO -->
         <section id="section-inventario" class="section hidden space-y-6">
           <div>
-            <h2 class="text-lg font-semibold text-slate-50">Inventario</h2>
-            <p class="text-xs text-slate-400">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Inventario</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
               Consulta rápida de existencias por producto y almacén.
             </p>
           </div>
-          <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+          <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
             <div class="overflow-x-auto">
               <table class="min-w-full text-xs">
-                <thead class="bg-slate-900/80 border-b border-slate-800">
+                <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
                   <tr>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Producto</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Almacén</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Disponible</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Reservada</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Estado</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Producto</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Almacén</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Disponible</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Reservada</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Estado</th>
                   </tr>
                 </thead>
                 <tbody id="inventario-tbody"></tbody>
@@ -313,68 +355,68 @@
         <section id="section-ventas" class="section hidden space-y-6">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <div>
-              <h2 class="text-lg font-semibold text-slate-50">Ventas</h2>
-              <p class="text-xs text-slate-400">
+              <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Ventas</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
                 Registro rápido de una factura de demostración.
               </p>
             </div>
           </div>
           <div class="grid gap-4 md:grid-cols-[2fr,1.1fr]">
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-xs">
-                  <thead class="bg-slate-900/80 border-b border-slate-800">
+                  <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
                     <tr>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Núm. factura</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Cliente</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Fecha</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Estado</th>
-                      <th class="px-3 py-2 text-left font-medium text-slate-400">Total (RD$)</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Núm. factura</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Cliente</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Fecha</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Estado</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Total (RD$)</th>
                     </tr>
                   </thead>
                   <tbody id="facturas-tbody"></tbody>
                 </table>
               </div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-3">
-              <h3 class="text-sm font-semibold text-slate-50">Nueva factura rápida</h3>
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Nueva factura rápida</h3>
               <form id="factura-form" class="space-y-2">
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Cliente</label>
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Cliente</label>
                   <select
                     id="factura-cliente"
-                    class="w-full bg-slate-950 border border-slate-800 rounded-md px-2 py-1.5 text-xs text-slate-50"
+                    class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-md px-2 py-1.5 text-xs text-slate-900 dark:text-slate-50"
                   ></select>
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Producto</label>
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Producto</label>
                   <select
                     id="factura-producto"
-                    class="w-full bg-slate-950 border border-slate-800 rounded-md px-2 py-1.5 text-xs text-slate-50"
+                    class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-md px-2 py-1.5 text-xs text-slate-900 dark:text-slate-50"
                   ></select>
                 </div>
                 <div class="space-y-1">
-                  <label class="text-[11px] text-slate-300">Cantidad</label>
+                  <label class="text-[11px] text-slate-600 dark:text-slate-300">Cantidad</label>
                   <input
                     id="factura-cantidad"
                     type="number"
                     min="1"
                     value="1"
-                    class="w-full bg-slate-950 border border-slate-800 text-xs text-slate-50 rounded-md px-2 py-1.5"
+                    class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5"
                   />
                 </div>
-                <div class="mt-2 p-2 rounded-md bg-slate-950/70 border border-slate-800">
-                  <p class="text-[11px] text-slate-400">Total estimado</p>
-                  <p id="factura-total-estimado" class="text-base font-semibold text-slate-50">
+                <div class="mt-2 p-2 rounded-md bg-slate-50/80 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800">
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400">Total estimado</p>
+                  <p id="factura-total-estimado" class="text-base font-semibold text-slate-900 dark:text-slate-50">
                     RD$ 0.00
                   </p>
-                  <p class="text-[10px] text-slate-500 mt-1">
+                  <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-1">
                     Cálculo aproximado con ITBIS incluido en el precio.
                   </p>
                 </div>
                 <button
                   type="submit"
-                  class="w-full mt-2 bg-sky-500 hover:bg-sky-600 text-[11px] font-semibold rounded-md py-2"
+                  class="w-full mt-2 bg-sky-600 hover:bg-sky-700 text-[11px] font-semibold rounded-md py-2 text-white"
                 >
                   Registrar factura demo
                 </button>
@@ -386,22 +428,22 @@
         <!-- CONTABILIDAD -->
         <section id="section-contabilidad" class="section hidden space-y-6">
           <div>
-            <h2 class="text-lg font-semibold text-slate-50">Contabilidad</h2>
-            <p class="text-xs text-slate-400">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Contabilidad</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
               Visualización de asientos contables generados por las ventas.
             </p>
           </div>
-          <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+          <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
             <div class="overflow-x-auto">
               <table class="min-w-full text-xs">
-                <thead class="bg-slate-900/80 border-b border-slate-800">
+                <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
                   <tr>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Fecha</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Descripción</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Origen</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Estado</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Debe</th>
-                    <th class="px-3 py-2 text-left font-medium text-slate-400">Haber</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Fecha</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Descripción</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Origen</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Estado</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Debe</th>
+                    <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Haber</th>
                   </tr>
                 </thead>
                 <tbody id="asientos-tbody"></tbody>
@@ -413,36 +455,36 @@
         <!-- REPORTES -->
         <section id="section-reportes" class="section hidden space-y-6">
           <div>
-            <h2 class="text-lg font-semibold text-slate-50">Reportes</h2>
-            <p class="text-xs text-slate-400">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Reportes</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
               Vista conceptual de los reportes que se podrían generar en el piloto.
             </p>
           </div>
           <div class="grid gap-4 md:grid-cols-3">
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-2">
-              <h3 class="text-sm font-semibold text-slate-50">Ventas por período</h3>
-              <p class="text-[11px] text-slate-400">
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Ventas por período</h3>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">
                 Resumen de facturación por rango de fechas, cliente o forma de pago.
               </p>
-              <button class="mt-1 h-7 px-3 border border-slate-700 text-[11px] text-slate-200 rounded-md">
+              <button class="mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md">
                 Simular generación
               </button>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-2">
-              <h3 class="text-sm font-semibold text-slate-50">Rotación de inventario</h3>
-              <p class="text-[11px] text-slate-400">
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Rotación de inventario</h3>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">
                 Indicadores de productos de alta y baja rotación.
               </p>
-              <button class="mt-1 h-7 px-3 border border-slate-700 text-[11px] text-slate-200 rounded-md">
+              <button class="mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md">
                 Simular generación
               </button>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-2">
-              <h3 class="text-sm font-semibold text-slate-50">Estados financieros básicos</h3>
-              <p class="text-[11px] text-slate-400">
+            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Estados financieros básicos</h3>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">
                 Balance general y estado de resultados a partir de asientos.
               </p>
-              <button class="mt-1 h-7 px-3 border border-slate-700 text-[11px] text-slate-200 rounded-md">
+              <button class="mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md">
                 Simular generación
               </button>
             </div>
@@ -454,6 +496,40 @@
 
   <!-- LÓGICA EN JS PURO -->
   <script>
+    // ===== TEMA (oscuro / claro) =====
+    function applyStoredTheme() {
+      const stored = localStorage.getItem("vantage-theme");
+      const root = document.documentElement;
+      if (stored === "light") {
+        root.classList.remove("dark");
+      } else {
+        root.classList.add("dark");
+      }
+      updateThemeToggleLabel();
+    }
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle("dark");
+      localStorage.setItem("vantage-theme", isDark ? "dark" : "light");
+      updateThemeToggleLabel();
+    }
+
+    function updateThemeToggleLabel() {
+      const root = document.documentElement;
+      const icon = document.getElementById("theme-toggle-icon");
+      const label = document.getElementById("theme-toggle-label");
+      if (!icon || !label) return;
+      const isDark = root.classList.contains("dark");
+      if (isDark) {
+        icon.textContent = "🌙";
+        label.textContent = "Modo oscuro";
+      } else {
+        icon.textContent = "☀️";
+        label.textContent = "Modo claro";
+      }
+    }
+
     // ===== DATOS INICIALES =====
     let clientes = [
       {
@@ -557,11 +633,18 @@
 
     // ===== LOGIN Y LAYOUT =====
     document.addEventListener("DOMContentLoaded", function () {
+      applyStoredTheme();
+
       const loginView = document.getElementById("login-view");
       const appLayout = document.getElementById("app-layout");
       const loginForm = document.getElementById("login-form");
       const logoutBtn = document.getElementById("logout-btn");
       const logoutBtnMobile = document.getElementById("logout-btn-mobile");
+      const themeToggleBtn = document.getElementById("theme-toggle");
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", toggleTheme);
+      }
 
       loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -592,7 +675,7 @@
       setupProductoForm();
       setupFacturaForm();
 
-      // Render inicial minimal por si se entra directo
+      // Render inicial (por si se entra directo)
       renderAll();
     });
 
@@ -602,17 +685,17 @@
       document.querySelectorAll(".section").forEach((sec) => {
         sec.classList.toggle("hidden", sec.id !== "section-" + sectionId);
       });
-      // Botones
+      // Botones (desktop + móvil comparten clase nav-btn)
       document.querySelectorAll(".nav-btn").forEach((btn) => {
         const sec = btn.getAttribute("data-section");
         const isActive = sec === sectionId;
         btn.className =
-          "nav-btn w-full flex items-center gap-2 px-3 py-2 rounded-xl text-left text-xs " +
+          "nav-btn flex items-center gap-2 rounded-xl text-xs px-3 py-2 " +
           (isActive
-            ? "bg-sky-500/10 text-sky-100 border border-sky-500/40"
-            : "text-slate-300 hover:bg-slate-900/80");
+            ? "bg-sky-500/10 text-sky-800 dark:text-sky-100 border border-sky-500/40"
+            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/80");
       });
-      // Re-render de sección relevante si aplica
+
       if (sectionId === "dashboard") renderDashboard();
       if (sectionId === "clientes") renderClientes();
       if (sectionId === "productos") renderProductos();
@@ -659,12 +742,13 @@
       tbody.innerHTML = "";
       clientes.forEach((c) => {
         const tr = document.createElement("tr");
-        tr.className = "border-b border-slate-800/60 hover:bg-slate-900/60";
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
         tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-100">${c.nombre}</td>
-          <td class="px-3 py-2 text-slate-300">${c.documento}</td>
-          <td class="px-3 py-2 text-slate-300">${c.telefono}</td>
-          <td class="px-3 py-2 text-slate-300">${c.correo}</td>
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${c.nombre}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.documento}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.telefono}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.correo}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -675,13 +759,14 @@
       tbody.innerHTML = "";
       productos.forEach((p) => {
         const tr = document.createElement("tr");
-        tr.className = "border-b border-slate-800/60 hover:bg-slate-900/60";
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
         tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-100">${p.codigo}</td>
-          <td class="px-3 py-2 text-slate-300">${p.nombre}</td>
-          <td class="px-3 py-2 text-slate-300">${p.categoria}</td>
-          <td class="px-3 py-2 text-slate-300">${p.precio.toLocaleString("es-DO")}</td>
-          <td class="px-3 py-2 text-slate-300">${p.stockMin}</td>
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${p.codigo}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.nombre}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.categoria}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.precio.toLocaleString("es-DO")}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.stockMin}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -695,22 +780,23 @@
         if (!prod) return;
         const isLow = inv.disponible <= prod.stockMin;
         const badgeClass = isLow
-          ? "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full"
-          : "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full";
+          ? "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full text-white"
+          : "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full text-white";
         const badgeText = isLow ? "Bajo stock" : "Saludable";
 
         const tr = document.createElement("tr");
-        tr.className = "border-b border-slate-800/60 hover:bg-slate-900/60";
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
         tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-100">
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">
             <div>
               <p>${prod.nombre}</p>
-              <p class="text-[10px] text-slate-500">${prod.codigo}</p>
+              <p class="text-[10px] text-slate-500 dark:text-slate-500">${prod.codigo}</p>
             </div>
           </td>
-          <td class="px-3 py-2 text-slate-300">${inv.almacen}</td>
-          <td class="px-3 py-2 text-slate-300">${inv.disponible}</td>
-          <td class="px-3 py-2 text-slate-300">${inv.reservada}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.almacen}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.disponible}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.reservada}</td>
           <td class="px-3 py-2">
             <span class="${badgeClass}">${badgeText}</span>
           </td>
@@ -720,31 +806,30 @@
     }
 
     function renderVentas() {
-      // Tabla de facturas
       const tbody = document.getElementById("facturas-tbody");
       tbody.innerHTML = "";
       facturas.forEach((f) => {
         const cli = clientes.find((c) => c.id === f.clienteId);
         const badgeClass =
           f.estado === "PAGADA"
-            ? "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full"
-            : "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full";
+            ? "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full text-white"
+            : "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full text-white";
 
         const tr = document.createElement("tr");
-        tr.className = "border-b border-slate-800/60 hover:bg-slate-900/60";
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
         tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-100">${f.numero}</td>
-          <td class="px-3 py-2 text-slate-300">${cli ? cli.nombre : "—"}</td>
-          <td class="px-3 py-2 text-slate-300">${f.fecha}</td>
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${f.numero}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${cli ? cli.nombre : "—"}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${f.fecha}</td>
           <td class="px-3 py-2">
             <span class="${badgeClass}">${f.estado}</span>
           </td>
-          <td class="px-3 py-2 text-slate-300">${f.total.toLocaleString("es-DO")}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${f.total.toLocaleString("es-DO")}</td>
         `;
         tbody.appendChild(tr);
       });
 
-      // Selects del formulario
       const selectCliente = document.getElementById("factura-cliente");
       const selectProducto = document.getElementById("factura-producto");
       selectCliente.innerHTML = "";
@@ -772,18 +857,19 @@
       tbody.innerHTML = "";
       asientos.forEach((a) => {
         const tr = document.createElement("tr");
-        tr.className = "border-b border-slate-800/60 hover:bg-slate-900/60";
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
         tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-300">${a.fecha}</td>
-          <td class="px-3 py-2 text-slate-100">${a.descripcion}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${a.fecha}</td>
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${a.descripcion}</td>
           <td class="px-3 py-2">
-            <span class="bg-slate-700/90 text-[10px] px-2 py-0.5 rounded-full">${a.origen}</span>
+            <span class="bg-slate-700/90 text-white text-[10px] px-2 py-0.5 rounded-full">${a.origen}</span>
           </td>
           <td class="px-3 py-2">
-            <span class="bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full">${a.estado}</span>
+            <span class="bg-emerald-600/90 text-white text-[10px] px-2 py-0.5 rounded-full">${a.estado}</span>
           </td>
-          <td class="px-3 py-2 text-slate-300">${formatMoney(a.debe)}</td>
-          <td class="px-3 py-2 text-slate-300">${formatMoney(a.haber)}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${formatMoney(a.debe)}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${formatMoney(a.haber)}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -837,7 +923,6 @@
           stockMin,
         });
 
-        // Inicializar inventario en 0
         const newInvId = inventario.length ? inventario[inventario.length - 1].id + 1 : 1;
         inventario.push({
           id: newInvId,
@@ -888,7 +973,6 @@
           estado: "PAGADA",
         });
 
-        // actualizar inventario
         inventario = inventario.map((inv) => {
           if (inv.productoId === productoId) {
             return {
@@ -899,7 +983,6 @@
           return inv;
         });
 
-        // asiento contable
         const newAsientoId = asientos.length ? asientos[asientos.length - 1].id + 1 : 1;
         asientos.push({
           id: newAsientoId,
