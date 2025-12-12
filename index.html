@@ -2,25 +2,21 @@
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>Vantage ERP - Demo</title>
+  <title>Vantage ERP - Demo Extendida</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: "class",
-    };
+    tailwind.config = { darkMode: "class" };
   </script>
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
 
   <!-- LOGIN -->
   <div id="login-view" class="min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-md bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-xl backdrop-blur">
+    <div class="w-full max-w-md bg-white/80 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-xl backdrop-blur">
       <div class="mb-6 text-center">
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-2">
-          ERP en la nube
-        </p>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-2">ERP en la nube</p>
         <h1 class="text-2xl font-semibold text-slate-900 dark:text-slate-50">
           Vantage <span class="text-sky-600 dark:text-sky-400">ERP</span>
         </h1>
@@ -46,6 +42,16 @@
             value="demo123"
           />
         </div>
+        <div class="space-y-1">
+          <label class="text-xs font-medium text-slate-700 dark:text-slate-200">Rol</label>
+          <select
+            id="login-role"
+            class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-50 text-sm rounded-md px-3 py-2"
+          >
+            <option value="admin">Administrador</option>
+            <option value="operador">Operador</option>
+          </select>
+        </div>
         <button
           type="submit"
           class="w-full mt-2 bg-sky-600 hover:bg-sky-700 text-xs font-semibold tracking-wide rounded-md py-2 text-white"
@@ -61,13 +67,12 @@
 
   <!-- APLICACIÓN -->
   <div id="app-layout" class="hidden min-h-screen flex bg-slate-50 dark:bg-slate-950">
+
     <!-- Sidebar desktop -->
     <aside class="hidden md:flex md:flex-col w-56 border-r border-slate-200 dark:border-slate-900 bg-white/80 dark:bg-slate-950/80">
       <div class="h-16 flex items-center px-4 border-b border-slate-200 dark:border-slate-900">
         <div>
-          <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500 dark:text-slate-500">
-            ERP en la nube
-          </p>
+          <p class="text-[10px] uppercase tracking-[0.3em] text-slate-500 dark:text-slate-500">ERP en la nube</p>
           <p class="text-sm font-semibold text-slate-900 dark:text-slate-50">
             Vantage <span class="text-sky-600 dark:text-sky-400">ERP</span>
           </p>
@@ -118,7 +123,7 @@
           <p class="text-[11px] md:text-xs text-slate-500 dark:text-slate-400">
             Piloto de implementación SaaS · Demo para tesis
           </p>
-          <div class="flex items-center gap-2 md:gap-3">
+          <div class="flex items-center gap-3">
             <!-- Toggle tema -->
             <button
               id="theme-toggle"
@@ -127,13 +132,12 @@
               <span id="theme-toggle-icon">🌙</span>
               <span id="theme-toggle-label" class="hidden sm:inline">Modo oscuro</span>
             </button>
-
             <div class="hidden sm:block text-right">
               <p class="text-[11px] text-slate-800 dark:text-slate-200 font-medium">
-                Usuario demo
+                Usuario demo (<span id="header-role">Administrador</span>)
               </p>
               <p class="text-[10px] text-slate-500 dark:text-slate-500">
-                Administrador · Empresa Vantage Test
+                Empresa Vantage Demo
               </p>
             </div>
             <button
@@ -147,7 +151,7 @@
       </header>
 
       <main class="flex-1 px-3 md:px-6 py-4 bg-slate-50 dark:bg-slate-950 overflow-y-auto text-xs md:text-sm">
-        <!-- NAV MÓVIL (se muestra solo en pantallas pequeñas) -->
+        <!-- NAV MÓVIL -->
         <div class="md:hidden mb-4">
           <div class="flex flex-wrap gap-2">
             <button data-section="dashboard" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-xl text-xs bg-sky-500/10 text-sky-800 dark:text-sky-100 border border-sky-500/40">
@@ -173,8 +177,7 @@
             </button>
           </div>
         </div>
-
-        <!-- DASHBOARD -->
+                <!-- DASHBOARD -->
         <section id="section-dashboard" class="section space-y-6">
           <div>
             <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Resumen general</h2>
@@ -183,26 +186,46 @@
             </p>
           </div>
           <div class="grid gap-4 md:grid-cols-4">
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
               <p class="text-[11px] text-slate-500 dark:text-slate-400">Clientes activos</p>
               <p id="dash-clientes" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">0</p>
               <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Registros maestros</p>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
               <p class="text-[11px] text-slate-500 dark:text-slate-400">Productos</p>
               <p id="dash-productos" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">0</p>
               <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Catálogo de inventario</p>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
               <p class="text-[11px] text-slate-500 dark:text-slate-400">Alertas de stock</p>
               <p id="dash-stock-bajo" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">0</p>
               <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Productos por debajo del mínimo</p>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
               <p class="text-[11px] text-slate-500 dark:text-slate-400">Ventas de hoy</p>
               <p id="dash-ventas-hoy" class="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
               <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Basado en facturas registradas</p>
             </div>
+          </div>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">Total facturado histórico</p>
+              <p id="dash-total-historico" class="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
+              <p class="mt-1 text-[10px] text-slate-400 dark:text-slate-500">Suma de todas las facturas.</p>
+            </div>
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+              <p class="text-[11px] text-slate-500 dark:text-slate-400">Ticket promedio</p>
+              <p id="dash-ticket-promedio" class="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
+              <p class="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Cuentas por cobrar</p>
+              <p id="dash-cxc" class="text-lg font-semibold text-amber-600 dark:text-amber-400">RD$ 0.00</p>
+            </div>
+          </div>
+          <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Bitácora de acciones</h3>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Últimos eventos</p>
+            </div>
+            <ul id="bitacora-list" class="space-y-1 max-h-40 overflow-y-auto text-[11px]"></ul>
           </div>
         </section>
 
@@ -216,8 +239,18 @@
               </p>
             </div>
           </div>
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <input
+              id="clientes-search"
+              class="w-full md:w-64 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs rounded-md px-2 py-1.5 text-slate-700 dark:text-slate-200"
+              placeholder="Buscar por nombre o documento..."
+            />
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">
+              Total clientes: <span id="clientes-count">0</span>
+            </p>
+          </div>
           <div class="grid gap-4 md:grid-cols-[2fr,1.1fr]">
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-xs">
                   <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
@@ -232,7 +265,7 @@
                 </table>
               </div>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Nuevo cliente</h3>
               <form id="cliente-form" class="space-y-2">
                 <div class="space-y-1">
@@ -272,8 +305,22 @@
               </p>
             </div>
           </div>
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <input
+              id="productos-search"
+              class="w-full md:w-64 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs rounded-md px-2 py-1.5 text-slate-700 dark:text-slate-200"
+              placeholder="Buscar por nombre o código..."
+            />
+            <button
+              type="button"
+              id="productos-sort-precio"
+              class="h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/80"
+            >
+              Ordenar por precio
+            </button>
+          </div>
           <div class="grid gap-4 md:grid-cols-[2fr,1.1fr]">
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-xs">
                   <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
@@ -289,7 +336,7 @@
                 </table>
               </div>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Nuevo producto</h3>
               <form id="producto-form" class="space-y-2">
                 <div class="space-y-1">
@@ -330,10 +377,10 @@
           <div>
             <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Inventario</h2>
             <p class="text-xs text-slate-500 dark:text-slate-400">
-              Consulta rápida de existencias por producto y almacén.
+              Consulta de existencias por producto y registro de entradas.
             </p>
           </div>
-          <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
             <div class="overflow-x-auto">
               <table class="min-w-full text-xs">
                 <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
@@ -349,6 +396,37 @@
               </table>
             </div>
           </div>
+          <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Registrar compra / entrada</h3>
+            <form id="compra-form" class="space-y-2">
+              <div class="space-y-1">
+                <label class="text-[11px] text-slate-600 dark:text-slate-300">Producto</label>
+                <select
+                  id="compra-producto"
+                  class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-md px-2 py-1.5 text-xs text-slate-900 dark:text-slate-50"
+                ></select>
+              </div>
+              <div class="space-y-1">
+                <label class="text-[11px] text-slate-600 dark:text-slate-300">Cantidad</label>
+                <input
+                  id="compra-cantidad"
+                  type="number"
+                  min="1"
+                  value="1"
+                  class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-[11px] font-semibold rounded-md py-2 text-white"
+              >
+                Registrar entrada
+              </button>
+            </form>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">
+              Para fines de demo se asume que el costo de compra coincide con el precio de catálogo.
+            </p>
+          </div>
         </section>
 
         <!-- VENTAS -->
@@ -357,12 +435,19 @@
             <div>
               <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Ventas</h2>
               <p class="text-xs text-slate-500 dark:text-slate-400">
-                Registro rápido de una factura de demostración.
+                Registro rápido de facturas demo y cuentas por cobrar.
               </p>
             </div>
           </div>
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <input
+              id="facturas-search"
+              class="w-full md:w-64 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs rounded-md px-2 py-1.5 text-slate-700 dark:text-slate-200"
+              placeholder="Buscar por número o cliente..."
+            />
+          </div>
           <div class="grid gap-4 md:grid-cols-[2fr,1.1fr]">
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-xs">
                   <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
@@ -372,13 +457,14 @@
                       <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Fecha</th>
                       <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Estado</th>
                       <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Total (RD$)</th>
+                      <th class="px-3 py-2 text-left font-medium text-slate-500 dark:text-slate-400">Acciones</th>
                     </tr>
                   </thead>
                   <tbody id="facturas-tbody"></tbody>
                 </table>
               </div>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Nueva factura rápida</h3>
               <form id="factura-form" class="space-y-2">
                 <div class="space-y-1">
@@ -405,13 +491,15 @@
                     class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-50 rounded-md px-2 py-1.5"
                   />
                 </div>
-                <div class="mt-2 p-2 rounded-md bg-slate-50/80 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800">
-                  <p class="text-[11px] text-slate-500 dark:text-slate-400">Total estimado</p>
-                  <p id="factura-total-estimado" class="text-base font-semibold text-slate-900 dark:text-slate-50">
-                    RD$ 0.00
-                  </p>
+                <div class="mt-2 p-2 rounded-md bg-slate-50/80 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-1">
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400">Subtotal (sin ITBIS)</p>
+                  <p id="factura-subtotal" class="text-[13px] font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">ITBIS (18%)</p>
+                  <p id="factura-itbis" class="text-[13px] font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Total</p>
+                  <p id="factura-total-estimado" class="text-base font-semibold text-slate-900 dark:text-slate-50">RD$ 0.00</p>
                   <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-1">
-                    Cálculo aproximado con ITBIS incluido en el precio.
+                    Para la demo se asume que el precio incluye ITBIS.
                   </p>
                 </div>
                 <button
@@ -430,10 +518,10 @@
           <div>
             <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Contabilidad</h2>
             <p class="text-xs text-slate-500 dark:text-slate-400">
-              Visualización de asientos contables generados por las ventas.
+              Asientos contables generados por ventas y compras demo.
             </p>
           </div>
-          <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
             <div class="overflow-x-auto">
               <table class="min-w-full text-xs">
                 <thead class="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
@@ -457,44 +545,79 @@
           <div>
             <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Reportes</h2>
             <p class="text-xs text-slate-500 dark:text-slate-400">
-              Vista conceptual de los reportes que se podrían generar en el piloto.
+              Simulación de reportes gerenciales generados a partir de los datos del sistema.
             </p>
           </div>
           <div class="grid gap-4 md:grid-cols-3">
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Ventas por período</h3>
               <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                Resumen de facturación por rango de fechas, cliente o forma de pago.
+                Resumen de facturación y ventas por cliente, basado en facturas registradas.
               </p>
-              <button class="mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md">
+              <button
+                type="button"
+                class="report-btn mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900/80"
+                data-report="ventas"
+              >
                 Simular generación
               </button>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Rotación de inventario</h3>
               <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                Indicadores de productos de alta y baja rotación.
+                Indicadores de productos con stock saludable y bajo stock.
               </p>
-              <button class="mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md">
+              <button
+                type="button"
+                class="report-btn mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900/80"
+                data-report="rotacion"
+              >
                 Simular generación
               </button>
             </div>
-            <div class="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-2">
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Estados financieros básicos</h3>
               <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                Balance general y estado de resultados a partir de asientos.
+                Resumen de ingresos y total de asientos contables generados.
               </p>
-              <button class="mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md">
+              <button
+                type="button"
+                class="report-btn mt-1 h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-200 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900/80"
+                data-report="estados"
+              >
                 Simular generación
               </button>
             </div>
+          </div>
+
+          <div
+            id="report-output"
+            class="mt-4 hidden rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-950/60 p-4 text-[11px] text-slate-700 dark:text-slate-200"
+          >
+            <div class="flex items-center justify-between mb-1">
+              <p class="font-semibold text-slate-900 dark:text-slate-50">Resultado de simulación</p>
+              <button
+                id="report-print-btn"
+                type="button"
+                class="h-7 px-3 border border-slate-300 dark:border-slate-700 text-[11px] rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/80"
+              >
+                Imprimir
+              </button>
+            </div>
+            <div id="report-output-body" class="space-y-1"></div>
           </div>
         </section>
       </main>
     </div>
   </div>
 
-  <!-- LÓGICA EN JS PURO -->
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden">
+    <div class="bg-slate-900/90 text-slate-50 text-xs px-3 py-2 rounded-lg shadow-lg border border-slate-700">
+      <span id="toast-message"></span>
+    </div>
+  </div>
+  <!-- LÓGICA EN JS -->
   <script>
     // ===== TEMA (oscuro / claro) =====
     function applyStoredTheme() {
@@ -622,7 +745,11 @@
       },
     ];
 
+    let bitacora = [];
     let activeSection = "dashboard";
+    let productosPrecioAsc = true;
+    let rolActual = "admin";
+    let toastTimeoutId = null;
 
     function formatMoney(amount) {
       return "RD$ " + amount.toLocaleString("es-DO", {
@@ -631,61 +758,652 @@
       });
     }
 
-    // ===== LOGIN Y LAYOUT =====
-    document.addEventListener("DOMContentLoaded", function () {
-      applyStoredTheme();
+    // ===== TOAST & BITÁCORA =====
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      const msgEl = document.getElementById("toast-message");
+      if (!toast || !msgEl) return;
+      msgEl.textContent = message;
+      toast.classList.remove("hidden");
+      if (toastTimeoutId) clearTimeout(toastTimeoutId);
+      toastTimeoutId = setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3000);
+    }
 
-      const loginView = document.getElementById("login-view");
-      const appLayout = document.getElementById("app-layout");
-      const loginForm = document.getElementById("login-form");
-      const logoutBtn = document.getElementById("logout-btn");
-      const logoutBtnMobile = document.getElementById("logout-btn-mobile");
-      const themeToggleBtn = document.getElementById("theme-toggle");
+    function logEvent(message) {
+      const now = new Date();
+      bitacora.unshift({
+        fecha: now.toISOString().slice(0, 10),
+        hora: now.toLocaleTimeString("es-DO", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        mensaje: message,
+      });
+      if (bitacora.length > 30) bitacora.pop();
+      renderBitacora();
+    }
 
-      if (themeToggleBtn) {
-        themeToggleBtn.addEventListener("click", toggleTheme);
+    function renderBitacora() {
+      const list = document.getElementById("bitacora-list");
+      if (!list) return;
+      list.innerHTML = "";
+      if (!bitacora.length) {
+        const li = document.createElement("li");
+        li.className = "text-[11px] text-slate-400 dark:text-slate-500";
+        li.textContent = "No hay eventos registrados aún.";
+        list.appendChild(li);
+        return;
       }
+      bitacora.forEach((ev) => {
+        const li = document.createElement("li");
+        li.innerHTML =
+          '<span class="text-slate-500 dark:text-slate-400">[' +
+          ev.hora +
+          "]</span> " +
+          ev.mensaje;
+        list.appendChild(li);
+      });
+    }
 
-      loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        loginView.classList.add("hidden");
-        appLayout.classList.remove("hidden");
-        renderAll();
+    // ===== RENDERIZADO DASHBOARD =====
+    function renderDashboard() {
+      const dashClientes = document.getElementById("dash-clientes");
+      const dashProductos = document.getElementById("dash-productos");
+      const dashStockBajo = document.getElementById("dash-stock-bajo");
+      const dashVentasHoy = document.getElementById("dash-ventas-hoy");
+      const dashTotalHistorico = document.getElementById("dash-total-historico");
+      const dashTicketPromedio = document.getElementById("dash-ticket-promedio");
+      const dashCxc = document.getElementById("dash-cxc");
+
+      dashClientes.textContent = clientes.length;
+      dashProductos.textContent = productos.length;
+
+      const lowStockCount = inventario.filter((inv) => {
+        const prod = productos.find((p) => p.id === inv.productoId);
+        return prod && inv.disponible <= prod.stockMin;
+      }).length;
+      dashStockBajo.textContent = lowStockCount;
+
+      const today = new Date().toISOString().slice(0, 10);
+      const todayTotal = facturas
+        .filter((f) => f.fecha === today)
+        .reduce((sum, f) => sum + f.total, 0);
+      dashVentasHoy.textContent = formatMoney(todayTotal);
+
+      const totalHistorico = facturas.reduce((sum, f) => sum + f.total, 0);
+      dashTotalHistorico.textContent = formatMoney(totalHistorico);
+
+      const ticketPromedio =
+        facturas.length > 0 ? totalHistorico / facturas.length : 0;
+      dashTicketPromedio.textContent = formatMoney(ticketPromedio);
+
+      const cxc = facturas
+        .filter((f) => f.estado === "PENDIENTE")
+        .reduce((sum, f) => sum + f.total, 0);
+      dashCxc.textContent = formatMoney(cxc);
+    }
+
+    // ===== RENDERIZADO CLIENTES =====
+    function renderClientes() {
+      const tbody = document.getElementById("clientes-tbody");
+      const searchInput = document.getElementById("clientes-search");
+      const countEl = document.getElementById("clientes-count");
+      if (!tbody) return;
+      const term = (searchInput?.value || "").toLowerCase();
+      tbody.innerHTML = "";
+      const filtered = clientes.filter((c) => {
+        const hayTermino = term.length > 0;
+        if (!hayTermino) return true;
+        return (
+          c.nombre.toLowerCase().includes(term) ||
+          c.documento.toLowerCase().includes(term)
+        );
+      });
+      filtered.forEach((c) => {
+        const tr = document.createElement("tr");
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
+        tr.innerHTML = `
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${c.nombre}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.documento}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.telefono}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.correo}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+      if (countEl) countEl.textContent = filtered.length;
+    }
+
+    // ===== RENDERIZADO PRODUCTOS =====
+    function renderProductos() {
+      const tbody = document.getElementById("productos-tbody");
+      const searchInput = document.getElementById("productos-search");
+      if (!tbody) return;
+      const term = (searchInput?.value || "").toLowerCase();
+      tbody.innerHTML = "";
+      const filtered = productos.filter((p) => {
+        const hayTermino = term.length > 0;
+        if (!hayTermino) return true;
+        return (
+          p.nombre.toLowerCase().includes(term) ||
+          p.codigo.toLowerCase().includes(term)
+        );
+      });
+      filtered.forEach((p) => {
+        const tr = document.createElement("tr");
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
+        tr.innerHTML = `
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${p.codigo}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.nombre}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.categoria}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.precio.toLocaleString("es-DO")}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.stockMin}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ===== RENDERIZADO INVENTARIO =====
+    function renderInventario() {
+      const tbody = document.getElementById("inventario-tbody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      inventario.forEach((inv) => {
+        const prod = productos.find((p) => p.id === inv.productoId);
+        if (!prod) return;
+        const isLow = inv.disponible <= prod.stockMin;
+        const badgeClass = isLow
+          ? "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full text-white"
+          : "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full text-white";
+        const badgeText = isLow ? "Bajo stock" : "Saludable";
+        const tr = document.createElement("tr");
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
+        tr.innerHTML = `
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">
+            <div>
+              <p>${prod.nombre}</p>
+              <p class="text-[10px] text-slate-500 dark:text-slate-500">${prod.codigo}</p>
+            </div>
+          </td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.almacen}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.disponible}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.reservada}</td>
+          <td class="px-3 py-2">
+            <span class="${badgeClass}">${badgeText}</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
       });
 
-      function handleLogout() {
-        appLayout.classList.add("hidden");
-        loginView.classList.remove("hidden");
+      // Rellenar select de compras
+      const selectCompra = document.getElementById("compra-producto");
+      if (selectCompra) {
+        selectCompra.innerHTML = "";
+        productos.forEach((p) => {
+          const opt = document.createElement("option");
+          opt.value = p.id;
+          opt.textContent = p.nombre;
+          selectCompra.appendChild(opt);
+        });
       }
+    }
 
-      logoutBtn.addEventListener("click", handleLogout);
-      logoutBtnMobile.addEventListener("click", handleLogout);
+    // ===== RENDERIZADO VENTAS =====
+    function renderVentas() {
+      const tbody = document.getElementById("facturas-tbody");
+      const searchInput = document.getElementById("facturas-search");
+      const selectCliente = document.getElementById("factura-cliente");
+      const selectProducto = document.getElementById("factura-producto");
+      if (!tbody) return;
 
-      // Navegación
-      const navButtons = document.querySelectorAll(".nav-btn");
-      navButtons.forEach((btn) => {
+      const term = (searchInput?.value || "").toLowerCase();
+      tbody.innerHTML = "";
+
+      const filtered = facturas.filter((f) => {
+        if (!term) return true;
+        const cli = clientes.find((c) => c.id === f.clienteId);
+        const clienteNombre = cli ? cli.nombre.toLowerCase() : "";
+        return (
+          f.numero.toLowerCase().includes(term) ||
+          clienteNombre.includes(term)
+        );
+      });
+
+      filtered.forEach((f) => {
+        const cli = clientes.find((c) => c.id === f.clienteId);
+        const badgeClass =
+          f.estado === "PAGADA"
+            ? "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full text-white"
+            : "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full text-white";
+        const tr = document.createElement("tr");
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
+        tr.innerHTML = `
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${f.numero}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${cli ? cli.nombre : "—"}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${f.fecha}</td>
+          <td class="px-3 py-2">
+            <span class="${badgeClass}">${f.estado}</span>
+          </td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${f.total.toLocaleString("es-DO")}</td>
+          <td class="px-3 py-2">
+            ${
+              f.estado === "PENDIENTE"
+                ? '<button class="text-[10px] px-2 py-1 rounded-md border border-emerald-600 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/40" data-marcar-pagada="' +
+                  f.id +
+                  '">Marcar pagada</button>'
+                : '<span class="text-[10px] text-slate-400">Sin acciones</span>'
+            }
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Listener para marcar como pagada
+      tbody.querySelectorAll("[data-marcar-pagada]").forEach((btn) => {
         btn.addEventListener("click", () => {
-          const section = btn.getAttribute("data-section");
-          setActiveSection(section);
+          const id = parseInt(btn.getAttribute("data-marcar-pagada"));
+          const fac = facturas.find((f) => f.id === id);
+          if (!fac) return;
+          fac.estado = "PAGADA";
+          logEvent("Factura " + fac.numero + " marcada como pagada.");
+          showToast("Factura marcada como pagada.");
+          renderVentas();
+          renderDashboard();
         });
       });
 
-      // Formularios
-      setupClienteForm();
-      setupProductoForm();
-      setupFacturaForm();
+      // Rellenar selects de formulario de factura
+      if (selectCliente) {
+        selectCliente.innerHTML = "";
+        clientes.forEach((c) => {
+          const opt = document.createElement("option");
+          opt.value = c.id;
+          opt.textContent = c.nombre;
+          selectCliente.appendChild(opt);
+        });
+      }
+      if (selectProducto) {
+        selectProducto.innerHTML = "";
+        productos.forEach((p) => {
+          const opt = document.createElement("option");
+          opt.value = p.id;
+          opt.textContent = p.nombre;
+          selectProducto.appendChild(opt);
+        });
+      }
 
-      // Render inicial (por si se entra directo)
-      renderAll();
-    });
+      actualizarTotalEstimado();
+    }
 
+    // ===== RENDERIZADO CONTABILIDAD =====
+    function renderContabilidad() {
+      const tbody = document.getElementById("asientos-tbody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      asientos.forEach((a) => {
+        const tr = document.createElement("tr");
+        tr.className =
+          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
+        tr.innerHTML = `
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${a.fecha}</td>
+          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${a.descripcion}</td>
+          <td class="px-3 py-2">
+            <span class="bg-slate-700/90 text-white text-[10px] px-2 py-0.5 rounded-full">${a.origen}</span>
+          </td>
+          <td class="px-3 py-2">
+            <span class="bg-emerald-600/90 text-white text-[10px] px-2 py-0.5 rounded-full">${a.estado}</span>
+          </td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${formatMoney(a.debe)}</td>
+          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${formatMoney(a.haber)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ===== FORMULARIOS =====
+    function setupClienteForm() {
+      const form = document.getElementById("cliente-form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const nombre = document.getElementById("cliente-nombre").value.trim();
+        const documento = document
+          .getElementById("cliente-documento")
+          .value.trim();
+        const telefono = document
+          .getElementById("cliente-telefono")
+          .value.trim();
+        const correo = document.getElementById("cliente-correo").value.trim();
+        if (!nombre) return;
+        const newId = clientes.length ? clientes[clientes.length - 1].id + 1 : 1;
+        clientes.push({ id: newId, nombre, documento, telefono, correo });
+        form.reset();
+        renderClientes();
+        renderDashboard();
+        renderVentas();
+        logEvent("Nuevo cliente registrado: " + nombre + ".");
+        showToast("Cliente guardado correctamente.");
+      });
+    }
+
+    function setupProductoForm() {
+      const form = document.getElementById("producto-form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const codigo = document.getElementById("producto-codigo").value.trim();
+        const nombre = document.getElementById("producto-nombre").value.trim();
+        const categoria = document
+          .getElementById("producto-categoria")
+          .value.trim();
+        const precio =
+          parseFloat(document.getElementById("producto-precio").value) || 0;
+        const stockMin =
+          parseInt(document.getElementById("producto-stockmin").value) || 0;
+        if (!codigo || !nombre) return;
+        const newId = productos.length ? productos[productos.length - 1].id + 1 : 1;
+        productos.push({
+          id: newId,
+          codigo,
+          nombre,
+          categoria,
+          precio,
+          stockMin,
+        });
+        const newInvId = inventario.length
+          ? inventario[inventario.length - 1].id + 1
+          : 1;
+        inventario.push({
+          id: newInvId,
+          productoId: newId,
+          almacen: "Almacén Principal",
+          disponible: stockMin, // usamos stock mínimo como stock inicial demo
+          reservada: 0,
+        });
+        form.reset();
+        renderProductos();
+        renderInventario();
+        renderDashboard();
+        renderVentas();
+        logEvent("Nuevo producto registrado: " + codigo + " - " + nombre + ".");
+        showToast("Producto guardado correctamente.");
+      });
+    }
+
+    function setupFacturaForm() {
+      const form = document.getElementById("factura-form");
+      const selectProducto = document.getElementById("factura-producto");
+      const inputCantidad = document.getElementById("factura-cantidad");
+      if (!form || !selectProducto || !inputCantidad) return;
+
+      selectProducto.addEventListener("change", actualizarTotalEstimado);
+      inputCantidad.addEventListener("input", actualizarTotalEstimado);
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!clientes.length || !productos.length) return;
+
+        const selectCliente = document.getElementById("factura-cliente");
+        const clienteId = parseInt(selectCliente.value);
+        const productoId = parseInt(selectProducto.value);
+        const cantidad = parseInt(inputCantidad.value) || 1;
+        const prod = productos.find((p) => p.id === productoId);
+        if (!prod) return;
+
+        const total = prod.precio * cantidad;
+        const base = total / 1.18;
+        const itbis = total - base;
+
+        const newId = facturas.length ? facturas[facturas.length - 1].id + 1 : 1;
+        const numero = "F-2025-" + String(newId).padStart(4, "0");
+        const hoy = new Date().toISOString().slice(0, 10);
+
+        facturas.push({
+          id: newId,
+          numero,
+          clienteId,
+          fecha: hoy,
+          total,
+          estado: "PENDIENTE",
+        });
+
+        // Actualizar inventario
+        inventario = inventario.map((inv) => {
+          if (inv.productoId === productoId) {
+            return {
+              ...inv,
+              disponible: Math.max(inv.disponible - cantidad, 0),
+            };
+          }
+          return inv;
+        });
+
+        // Asiento contable de venta (simplificado)
+        const newAsientoId = asientos.length
+          ? asientos[asientos.length - 1].id + 1
+          : 1;
+        asientos.push({
+          id: newAsientoId,
+          fecha: hoy,
+          descripcion: "Venta demo producto " + prod.codigo,
+          origen: "VENTA",
+          estado: "CONTABILIZADO",
+          debe: total,
+          haber: total,
+        });
+
+        inputCantidad.value = "1";
+        actualizarTotalEstimado();
+        renderVentas();
+        renderInventario();
+        renderDashboard();
+        renderContabilidad();
+        logEvent(
+          "Factura registrada: " +
+            numero +
+            " (" +
+            cantidad +
+            " und. de " +
+            prod.codigo +
+            ")."
+        );
+        showToast("Factura demo registrada.");
+      });
+    }
+
+    function setupCompraForm() {
+      const form = document.getElementById("compra-form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const selectProducto = document.getElementById("compra-producto");
+        const inputCantidad = document.getElementById("compra-cantidad");
+        const productoId = parseInt(selectProducto.value);
+        const cantidad = parseInt(inputCantidad.value) || 0;
+        if (!productoId || cantidad <= 0) return;
+        const prod = productos.find((p) => p.id === productoId);
+        if (!prod) return;
+
+        let inv = inventario.find((i) => i.productoId === productoId);
+        if (!inv) {
+          const newInvId = inventario.length
+            ? inventario[inventario.length - 1].id + 1
+            : 1;
+          inv = {
+            id: newInvId,
+            productoId,
+            almacen: "Almacén Principal",
+            disponible: 0,
+            reservada: 0,
+          };
+          inventario.push(inv);
+        }
+        inv.disponible += cantidad;
+
+        // Asiento contable de compra demo (usando precio de catálogo)
+        const total = prod.precio * cantidad;
+        const hoy = new Date().toISOString().slice(0, 10);
+        const newAsientoId = asientos.length
+          ? asientos[asientos.length - 1].id + 1
+          : 1;
+        asientos.push({
+          id: newAsientoId,
+          fecha: hoy,
+          descripcion: "Compra demo producto " + prod.codigo,
+          origen: "COMPRA",
+          estado: "CONTABILIZADO",
+          debe: total,
+          haber: total,
+        });
+
+        inputCantidad.value = "1";
+        renderInventario();
+        renderDashboard();
+        renderContabilidad();
+        logEvent(
+          "Entrada de inventario: " +
+            cantidad +
+            " und. de " +
+            prod.codigo +
+            " en almacén."
+        );
+        showToast("Entrada de inventario registrada.");
+      });
+    }
+
+    function actualizarTotalEstimado() {
+      const selectProducto = document.getElementById("factura-producto");
+      const inputCantidad = document.getElementById("factura-cantidad");
+      const labelSubtotal = document.getElementById("factura-subtotal");
+      const labelItbis = document.getElementById("factura-itbis");
+      const labelTotal = document.getElementById("factura-total-estimado");
+      if (!selectProducto || !inputCantidad || !labelSubtotal || !labelItbis || !labelTotal) return;
+      const productoId = parseInt(selectProducto.value || "0");
+      const cantidad = parseInt(inputCantidad.value || "1");
+      const prod = productos.find((p) => p.id === productoId);
+      const total = prod ? prod.precio * (cantidad || 0) : 0;
+      const base = total / 1.18;
+      const itbis = total - base;
+      labelSubtotal.textContent = formatMoney(base || 0);
+      labelItbis.textContent = formatMoney(itbis || 0);
+      labelTotal.textContent = formatMoney(total || 0);
+    }
+
+    // ===== REPORTES (simulación) =====
+    function setupReportButtons() {
+      const buttons = document.querySelectorAll(".report-btn");
+      const output = document.getElementById("report-output");
+      const body = document.getElementById("report-output-body");
+      const printBtn = document.getElementById("report-print-btn");
+      if (!output || !body) return;
+
+      if (printBtn) {
+        printBtn.addEventListener("click", () => {
+          window.print();
+        });
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const type = btn.getAttribute("data-report");
+          const hoy = new Date().toISOString().slice(0, 10);
+          let html = "";
+
+          if (type === "ventas") {
+            const total = facturas.reduce((sum, f) => sum + f.total, 0);
+            const porCliente = {};
+            facturas.forEach((f) => {
+              const cli = clientes.find((c) => c.id === f.clienteId);
+              const nombre = cli ? cli.nombre : "Sin cliente";
+              porCliente[nombre] = (porCliente[nombre] || 0) + f.total;
+            });
+            const clientesOrdenados = Object.entries(porCliente).sort(
+              (a, b) => b[1] - a[1]
+            );
+            html = `
+              <p>Resumen de ventas al <span class="font-semibold">${hoy}</span>:</p>
+              <ul class="list-disc pl-4 mt-1 space-y-0.5">
+                <li>Facturas registradas: <span class="font-semibold">${facturas.length}</span></li>
+                <li>Total facturado: <span class="font-semibold">${formatMoney(total)}</span></li>
+              </ul>
+              <p class="mt-2 font-semibold">Ventas por cliente:</p>
+              <ul class="list-disc pl-4 mt-1 space-y-0.5">
+                ${
+                  clientesOrdenados.length
+                    ? clientesOrdenados
+                        .map(
+                          ([nombre, monto]) =>
+                            `<li>${nombre}: <span class="font-semibold">${formatMoney(
+                              monto
+                            )}</span></li>`
+                        )
+                        .join("")
+                    : "<li>No hay clientes con ventas registradas.</li>"
+                }
+              </ul>
+            `;
+            logEvent("Simulación de reporte de ventas por período.");
+          } else if (type === "rotacion") {
+            const totalProductos = productos.length;
+            const bajoStock = inventario.filter((inv) => {
+              const p = productos.find((x) => x.id === inv.productoId);
+              return p && inv.disponible <= p.stockMin;
+            }).length;
+            const saludable = totalProductos - bajoStock;
+            html = `
+              <p>Resumen de inventario:</p>
+              <ul class="list-disc pl-4 mt-1 space-y-0.5">
+                <li>Productos en catálogo: <span class="font-semibold">${totalProductos}</span></li>
+                <li>Productos con stock saludable: <span class="font-semibold">${saludable}</span></li>
+                <li>Productos con bajo stock: <span class="font-semibold text-amber-600">${bajoStock}</span></li>
+              </ul>
+            `;
+            logEvent("Simulación de reporte de rotación de inventario.");
+          } else if (type === "estados") {
+            const totalDebe = asientos.reduce((sum, a) => sum + a.debe, 0);
+            const totalHaber = asientos.reduce((sum, a) => sum + a.haber, 0);
+            html = `
+              <p>Resumen contable simplificado:</p>
+              <ul class="list-disc pl-4 mt-1 space-y-0.5">
+                <li>Cantidad de asientos generados: <span class="font-semibold">${asientos.length}</span></li>
+                <li>Total en el Debe: <span class="font-semibold">${formatMoney(totalDebe)}</span></li>
+                <li>Total en el Haber: <span class="font-semibold">${formatMoney(totalHaber)}</span></li>
+              </ul>
+              <p class="mt-2 text-slate-500 dark:text-slate-400">
+                Nota: Para fines de demo se asume que las ventas representan ingresos y que los asientos se encuentran balanceados.
+              </p>
+            `;
+            logEvent("Simulación de reporte de estados financieros básicos.");
+          }
+
+          body.innerHTML = html;
+          output.classList.remove("hidden");
+          showToast("Reporte simulado generado.");
+        });
+      });
+    }
+
+    // ===== NAVEGACIÓN Y ROL =====
     function setActiveSection(sectionId) {
+      // Restricciones de rol: operador no entra a contabilidad ni reportes
+      if (
+        rolActual !== "admin" &&
+        (sectionId === "contabilidad" || sectionId === "reportes")
+      ) {
+        showToast("Tu rol no tiene acceso a este módulo.");
+        return;
+      }
+
       activeSection = sectionId;
-      // Secciones
       document.querySelectorAll(".section").forEach((sec) => {
         sec.classList.toggle("hidden", sec.id !== "section-" + sectionId);
       });
-      // Botones (desktop + móvil comparten clase nav-btn)
+
       document.querySelectorAll(".nav-btn").forEach((btn) => {
         const sec = btn.getAttribute("data-section");
         const isActive = sec === sectionId;
@@ -711,310 +1429,121 @@
       renderInventario();
       renderVentas();
       renderContabilidad();
+      renderBitacora();
       setActiveSection(activeSection);
     }
 
-    // ===== RENDERIZADO =====
-    function renderDashboard() {
-      const dashClientes = document.getElementById("dash-clientes");
-      const dashProductos = document.getElementById("dash-productos");
-      const dashStockBajo = document.getElementById("dash-stock-bajo");
-      const dashVentasHoy = document.getElementById("dash-ventas-hoy");
-
-      dashClientes.textContent = clientes.length;
-      dashProductos.textContent = productos.length;
-
-      const lowStockCount = inventario.filter((inv) => {
-        const prod = productos.find((p) => p.id === inv.productoId);
-        return prod && inv.disponible <= prod.stockMin;
-      }).length;
-      dashStockBajo.textContent = lowStockCount;
-
-      const today = new Date().toISOString().slice(0, 10);
-      const todayTotal = facturas
-        .filter((f) => f.fecha === today)
-        .reduce((sum, f) => sum + f.total, 0);
-      dashVentasHoy.textContent = formatMoney(todayTotal);
+    function setRole(role) {
+      rolActual = role === "operador" ? "operador" : "admin";
+      const headerRole = document.getElementById("header-role");
+      if (headerRole) {
+        headerRole.textContent =
+          rolActual === "admin" ? "Administrador" : "Operador";
+      }
+      if (
+        rolActual !== "admin" &&
+        (activeSection === "contabilidad" || activeSection === "reportes")
+      ) {
+        activeSection = "dashboard";
+      }
+      setActiveSection(activeSection);
     }
 
-    function renderClientes() {
-      const tbody = document.getElementById("clientes-tbody");
-      tbody.innerHTML = "";
-      clientes.forEach((c) => {
-        const tr = document.createElement("tr");
-        tr.className =
-          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
-        tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${c.nombre}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.documento}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.telefono}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${c.correo}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
+    // ===== INICIALIZACIÓN =====
+    document.addEventListener("DOMContentLoaded", function () {
+      applyStoredTheme();
 
-    function renderProductos() {
-      const tbody = document.getElementById("productos-tbody");
-      tbody.innerHTML = "";
-      productos.forEach((p) => {
-        const tr = document.createElement("tr");
-        tr.className =
-          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
-        tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${p.codigo}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.nombre}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.categoria}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.precio.toLocaleString("es-DO")}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${p.stockMin}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
+      const loginView = document.getElementById("login-view");
+      const appLayout = document.getElementById("app-layout");
+      const loginForm = document.getElementById("login-form");
+      const logoutBtn = document.getElementById("logout-btn");
+      const logoutBtnMobile = document.getElementById("logout-btn-mobile");
+      const themeToggleBtn = document.getElementById("theme-toggle");
 
-    function renderInventario() {
-      const tbody = document.getElementById("inventario-tbody");
-      tbody.innerHTML = "";
-      inventario.forEach((inv) => {
-        const prod = productos.find((p) => p.id === inv.productoId);
-        if (!prod) return;
-        const isLow = inv.disponible <= prod.stockMin;
-        const badgeClass = isLow
-          ? "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full text-white"
-          : "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full text-white";
-        const badgeText = isLow ? "Bajo stock" : "Saludable";
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", toggleTheme);
+      }
 
-        const tr = document.createElement("tr");
-        tr.className =
-          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
-        tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">
-            <div>
-              <p>${prod.nombre}</p>
-              <p class="text-[10px] text-slate-500 dark:text-slate-500">${prod.codigo}</p>
-            </div>
-          </td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.almacen}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.disponible}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${inv.reservada}</td>
-          <td class="px-3 py-2">
-            <span class="${badgeClass}">${badgeText}</span>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderVentas() {
-      const tbody = document.getElementById("facturas-tbody");
-      tbody.innerHTML = "";
-      facturas.forEach((f) => {
-        const cli = clientes.find((c) => c.id === f.clienteId);
-        const badgeClass =
-          f.estado === "PAGADA"
-            ? "bg-emerald-600/90 text-[10px] px-2 py-0.5 rounded-full text-white"
-            : "bg-amber-500/90 text-[10px] px-2 py-0.5 rounded-full text-white";
-
-        const tr = document.createElement("tr");
-        tr.className =
-          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
-        tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${f.numero}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${cli ? cli.nombre : "—"}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${f.fecha}</td>
-          <td class="px-3 py-2">
-            <span class="${badgeClass}">${f.estado}</span>
-          </td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${f.total.toLocaleString("es-DO")}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      const selectCliente = document.getElementById("factura-cliente");
-      const selectProducto = document.getElementById("factura-producto");
-      selectCliente.innerHTML = "";
-      selectProducto.innerHTML = "";
-
-      clientes.forEach((c) => {
-        const opt = document.createElement("option");
-        opt.value = c.id;
-        opt.textContent = c.nombre;
-        selectCliente.appendChild(opt);
-      });
-
-      productos.forEach((p) => {
-        const opt = document.createElement("option");
-        opt.value = p.id;
-        opt.textContent = p.nombre;
-        selectProducto.appendChild(opt);
-      });
-
-      actualizarTotalEstimado();
-    }
-
-    function renderContabilidad() {
-      const tbody = document.getElementById("asientos-tbody");
-      tbody.innerHTML = "";
-      asientos.forEach((a) => {
-        const tr = document.createElement("tr");
-        tr.className =
-          "border-b border-slate-200 dark:border-slate-800/60 hover:bg-slate-50 dark:hover:bg-slate-900/60";
-        tr.innerHTML = `
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${a.fecha}</td>
-          <td class="px-3 py-2 text-slate-900 dark:text-slate-100">${a.descripcion}</td>
-          <td class="px-3 py-2">
-            <span class="bg-slate-700/90 text-white text-[10px] px-2 py-0.5 rounded-full">${a.origen}</span>
-          </td>
-          <td class="px-3 py-2">
-            <span class="bg-emerald-600/90 text-white text-[10px] px-2 py-0.5 rounded-full">${a.estado}</span>
-          </td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${formatMoney(a.debe)}</td>
-          <td class="px-3 py-2 text-slate-700 dark:text-slate-300">${formatMoney(a.haber)}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    // ===== FORMULARIOS =====
-    function setupClienteForm() {
-      const form = document.getElementById("cliente-form");
-      form.addEventListener("submit", function (e) {
+      loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        const nombre = document.getElementById("cliente-nombre").value.trim();
-        const documento = document.getElementById("cliente-documento").value.trim();
-        const telefono = document.getElementById("cliente-telefono").value.trim();
-        const correo = document.getElementById("cliente-correo").value.trim();
-        if (!nombre) return;
-
-        const newId = clientes.length ? clientes[clientes.length - 1].id + 1 : 1;
-        clientes.push({
-          id: newId,
-          nombre,
-          documento,
-          telefono,
-          correo,
-        });
-
-        form.reset();
-        renderClientes();
-        renderDashboard();
-        renderVentas();
+        const roleSelect = document.getElementById("login-role");
+        rolActual = roleSelect ? roleSelect.value : "admin";
+        loginView.classList.add("hidden");
+        appLayout.classList.remove("hidden");
+        renderAll();
+        setRole(rolActual);
+        logEvent(
+          "Inicio de sesión de usuario demo como " +
+            (rolActual === "admin" ? "Administrador" : "Operador") +
+            "."
+        );
+        showToast(
+          "Sesión iniciada en Vantage ERP (" +
+            (rolActual === "admin" ? "Admin" : "Operador") +
+            ")"
+        );
       });
-    }
 
-    function setupProductoForm() {
-      const form = document.getElementById("producto-form");
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const codigo = document.getElementById("producto-codigo").value.trim();
-        const nombre = document.getElementById("producto-nombre").value.trim();
-        const categoria = document.getElementById("producto-categoria").value.trim();
-        const precio = parseFloat(document.getElementById("producto-precio").value) || 0;
-        const stockMin = parseInt(document.getElementById("producto-stockmin").value) || 0;
-        if (!codigo || !nombre) return;
+      function handleLogout() {
+        appLayout.classList.add("hidden");
+        loginView.classList.remove("hidden");
+        showToast("Sesión cerrada.");
+        logEvent("Cierre de sesión de usuario demo.");
+      }
 
-        const newId = productos.length ? productos[productos.length - 1].id + 1 : 1;
-        productos.push({
-          id: newId,
-          codigo,
-          nombre,
-          categoria,
-          precio,
-          stockMin,
+      logoutBtn.addEventListener("click", handleLogout);
+      logoutBtnMobile.addEventListener("click", handleLogout);
+
+      // Navegación
+      const navButtons = document.querySelectorAll(".nav-btn");
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const section = btn.getAttribute("data-section");
+          setActiveSection(section);
         });
-
-        const newInvId = inventario.length ? inventario[inventario.length - 1].id + 1 : 1;
-        inventario.push({
-          id: newInvId,
-          productoId: newId,
-          almacen: "Almacén Principal",
-          disponible: 0,
-          reservada: 0,
-        });
-
-        form.reset();
-        renderProductos();
-        renderInventario();
-        renderDashboard();
-        renderVentas();
       });
-    }
 
-    function setupFacturaForm() {
-      const form = document.getElementById("factura-form");
-      const selectCliente = document.getElementById("factura-cliente");
-      const selectProducto = document.getElementById("factura-producto");
-      const inputCantidad = document.getElementById("factura-cantidad");
+      // Formularios y reportes
+      setupClienteForm();
+      setupProductoForm();
+      setupFacturaForm();
+      setupCompraForm();
+      setupReportButtons();
 
-      selectProducto.addEventListener("change", actualizarTotalEstimado);
-      inputCantidad.addEventListener("input", actualizarTotalEstimado);
+      // Búsquedas
+      const clientesSearch = document.getElementById("clientes-search");
+      if (clientesSearch) {
+        clientesSearch.addEventListener("input", renderClientes);
+      }
+      const productosSearch = document.getElementById("productos-search");
+      if (productosSearch) {
+        productosSearch.addEventListener("input", renderProductos);
+      }
+      const facturasSearch = document.getElementById("facturas-search");
+      if (facturasSearch) {
+        facturasSearch.addEventListener("input", renderVentas);
+      }
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (!clientes.length || !productos.length) return;
-
-        const clienteId = parseInt(selectCliente.value);
-        const productoId = parseInt(selectProducto.value);
-        const cantidad = parseInt(inputCantidad.value) || 1;
-        const prod = productos.find((p) => p.id === productoId);
-        if (!prod) return;
-
-        const total = prod.precio * cantidad;
-        const newId = facturas.length ? facturas[facturas.length - 1].id + 1 : 1;
-        const numero = "F-2025-" + String(newId).padStart(4, "0");
-        const hoy = new Date().toISOString().slice(0, 10);
-
-        facturas.push({
-          id: newId,
-          numero,
-          clienteId,
-          fecha: hoy,
-          total,
-          estado: "PAGADA",
+      // Ordenar productos por precio
+      const sortBtn = document.getElementById("productos-sort-precio");
+      if (sortBtn) {
+        sortBtn.addEventListener("click", () => {
+          productosPrecioAsc = !productosPrecioAsc;
+          productos.sort((a, b) =>
+            productosPrecioAsc ? a.precio - b.precio : b.precio - a.precio
+          );
+          renderProductos();
+          showToast(
+            "Productos ordenados por precio " +
+              (productosPrecioAsc ? "ascendente" : "descendente") +
+              "."
+          );
         });
+      }
 
-        inventario = inventario.map((inv) => {
-          if (inv.productoId === productoId) {
-            return {
-              ...inv,
-              disponible: Math.max(inv.disponible - cantidad, 0),
-            };
-          }
-          return inv;
-        });
-
-        const newAsientoId = asientos.length ? asientos[asientos.length - 1].id + 1 : 1;
-        asientos.push({
-          id: newAsientoId,
-          fecha: hoy,
-          descripcion: "Venta demo producto " + prod.codigo,
-          origen: "VENTA",
-          estado: "CONTABILIZADO",
-          debe: total,
-          haber: total,
-        });
-
-        inputCantidad.value = "1";
-        actualizarTotalEstimado();
-        renderVentas();
-        renderInventario();
-        renderDashboard();
-        renderContabilidad();
-      });
-    }
-
-    function actualizarTotalEstimado() {
-      const selectProducto = document.getElementById("factura-producto");
-      const inputCantidad = document.getElementById("factura-cantidad");
-      const labelTotal = document.getElementById("factura-total-estimado");
-      if (!selectProducto || !inputCantidad || !labelTotal) return;
-
-      const productoId = parseInt(selectProducto.value || "0");
-      const cantidad = parseInt(inputCantidad.value || "1");
-      const prod = productos.find((p) => p.id === productoId);
-      const total = prod ? prod.precio * (cantidad || 0) : 0;
-      labelTotal.textContent = formatMoney(total);
-    }
+      // Render inicial
+      renderAll();
+    });
   </script>
 </body>
 </html>
